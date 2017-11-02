@@ -1,0 +1,22 @@
+body
+{
+margin: 5%;
+}
+
+.headerbox
+{
+	text-align: center;
+	color: white;
+	background-color: black;
+	height: 200px;
+	margin-bottom: 50px;
+	padding-top: 30px;
+}
+
+tr
+{
+	border-bottom-style: solid;
+	border-bottom-width: 3px;
+	border-bottom-color: grey;
+	width: 100%;
+}
