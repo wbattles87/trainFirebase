@@ -13,7 +13,7 @@ var config = 																		// go to firebase, create new project then get so
 firebase.initializeApp(config);
 
 var database = firebase.database();
-var employeesRef = "/employees";
+var trainRef = "/train";
 
 function saveTrainData()
 {
@@ -45,20 +45,18 @@ function saveTrainData()
 
 function loadTrainData()
 {
-	database.ref(trainRef).on("child_added", function(snapshot)		// child_added is used when retrieving a list of items from a database.  Value is pulling the entire contents but child will be triggered once for each child then each subsequent child.
+	database.ref(trainRef).on("child_added", function(snapshot)									// child_added is used when retrieving a list of items from a database.  Value is pulling the entire contents but child will be triggered once for each child then each subsequent child.
 	{							
 		var tableRow = $("<tr>");
 
-		var randomNumber = Math.floor(Math.random() * 255);
+
 
 		tableRow.html(
 			"<th> </th>"+
 			"<td>"+ snapshot.val().trainname +"</td>"+
 			"<td>"+ snapshot.val().traindestination +"</td>"+
 			"<td>"+ snapshot.val().traintimer +"</td>"+
-			"<td>"+ randomNumber +"</td>"+
-			"<td>"+ snapshot.val().trainfrequency +"</td>"+
-			"<td>"+ parseInt(snapshot.val().trainfrequency) * randomNumber +"</td>");			// we are reading data from a database via snapshot.  This is passed with event callback like on or once
+			"<td>"+ snapshot.val().trainfrequency +"</td>");			// we are reading data from a database via snapshot.  This is passed with event callback like on or once
 		$("#tablebody").prepend(tableRow);														// val for snapshot will extract all the contents as an object from the snapshot
 	}, 
 	function(err)
